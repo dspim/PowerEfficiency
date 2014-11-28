@@ -7,15 +7,12 @@ op <- options(recharts.plot.tag='chart')
 get_subpattern <- function(pattern, x, i) {
   sapply(regmatches(x, regexec(pattern, x)), `[`, i)
 }
-gdp <- read.csv("../data/gdp.csv", header = T, stringsAsFactor = F) %>%
-  filter(grepl("^[A-Z]+[ \\.]", name)) %>%
-  mutate(label = get_subpattern("^([A-Z]+)[ \\.]", name, 2))
-gdp1 <- filter(gdp, nchar(label) == 1)
-gdp2 <- filter(gdp, nchar(label) == 2)
-charts <- list()
+power <- read.csv("../data/power.csv", header = T, stringsAsFactor = F) %>%
+  filter(grepl("^[A-Z]", label)) %>%
+  mutate(label = substring(label, 1, 1), year = year + 1911)
 year.value <- {{year_value}}
-gdp.year <- filter(gdp1, year == year.value)
-x <- gdp.year$value
-names(x) <- as.character(gdp.year$name)
-plot(ePie(x, legend.orient = "vertical"))
+power.year <- filter(power, year == year.value)
+x <- power.year$value
+names(x) <- as.character(power.year$label)
+plot(ePie(x, legend.orient = "vertical", size = c(768, 512), title = sprintf("%d 年度各行業用電量（度）", power.value)))
 ```

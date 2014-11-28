@@ -22,25 +22,24 @@ opts_chunk$set(echo = FALSE)
 
 ## 能源消耗概況
 
+首先我們可以來觀察自1981年至2012年，各年度的能源消耗狀況。(點選年度後可以檢視能源消耗分佈)
+
 <div id = "tabs">
   <ul>
 ```{r power, results='asis', cache=TRUE}
 template <- readLines("power.Rmd.template") %>%
   paste(collapse="\n")
-year_value.all <- paste(1981:1982) #paste(1981:2012)
+year_value.all <- paste(1981:2012) #paste(1981:2012)
 for(year_value in year_value.all) {
   render <- whisker.render(template, debug = T)
   write(render, file = sprintf("power/%s.Rmd", year_value))
-  cat(sprintf('    <li><a href="power/%s.html">%s</a></li>', year_value, year_value))
+  cat(sprintf('    <li><a id="power_%s" href="power/%s.html">%s</a></li>', year_value, year_value, year_value))
 }
 ```
   </ul>
-```{r power_tab_content, results='asis', dependson="power"}
-#for(year_value in year_value.all) {
-#  cat(sprintf('    <div id="power_%s" class="tab_content"><a href="power/%s.html"></div>', year_value, year_value))
-#}
-```
 </div>
+
+
 
 ## 使用的工具
 
