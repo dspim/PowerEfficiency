@@ -1,0 +1,18 @@
+<title></title>
+<link rel="stylesheet" href="css/jquery-ui.css"/>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui-1.11.2/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#tabs" ).tabs({
+//      event: "mouseover",
+      beforeLoad: function( event, ui ) {
+        ui.jqXHR.error(function() {
+          ui.panel.html(
+            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+            "If this wouldn't be a demo." );
+        });
+      }
+    });
+  });
+</script>
