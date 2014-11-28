@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>資料來源</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+<title></title>
+<link rel="stylesheet" href="css/jquery-ui.css"/>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui-1.11.2/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#tabs" ).tabs({
+//      event: "mouseover",
+      beforeLoad: function( event, ui ) {
+        ui.jqXHR.error(function() {
+          ui.panel.html(
+            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+            "If this wouldn't be a demo." );
+        });
+      }
+    });
+  });
+</script>
+
+</head>
+
+<body>
+<p>近年來能源議題因為核四的關係，受到大家的廣泛的關注。其中爭論最嚴重的議題之一，就是能源和經濟的關係。有一個看法是，利用提升能源的使用效率，來達到降低能源需求的同時，來維持經濟的發展。</p>
+
+<p>這裡我們利用政府的公開資料來研究各種產業運用能源的狀況，以及貢獻的國民生產毛額，來了解各行各業使用能源的效率。透過這樣的研究，我們可以：</p>
+
+<ul>
+<li>透過各行各業的用電度數，來了解哪些行業是耗能的行業，哪些是節能的行業</li>
+<li>透過各行各業對國民生產毛額的貢獻，來了解哪些行業對經濟的影響較大，哪些對經濟的影響較小</li>
+<li>透過比對耗電和國民生產毛額的數據，來了解哪些行業對能源的使用較為浪費，應該是重點研究如何提升效率的對象</li>
+</ul>
+
+<h2>資料來源</h2>
+
+<ul>
+<li>gdp: <a href="http://61.60.106.82/pxweb/Dialog/statfile9L.asp">中華民國統計資訊網-總體統計資料庫</a></li>
+<li>power: <a href="http://data.gov.tw/node/6064">政府資料開放平台-用電統計資料</a></li>
+</ul>
+
+<h2>能源消耗概況</h2>
+
+<p>首先我們可以來觀察自1981年至2012年，各年度的能源消耗狀況。(點選年度後可以檢視能源消耗分佈)</p>
+
+<div id = "tabs">
+  <ul>
+    <li><a id="power_1981" href="power/1981.html">1981</a></li>    <li><a id="power_1982" href="power/1982.html">1982</a></li>    <li><a id="power_1983" href="power/1983.html">1983</a></li>    <li><a id="power_1984" href="power/1984.html">1984</a></li>    <li><a id="power_1985" href="power/1985.html">1985</a></li>    <li><a id="power_1986" href="power/1986.html">1986</a></li>    <li><a id="power_1987" href="power/1987.html">1987</a></li>    <li><a id="power_1988" href="power/1988.html">1988</a></li>    <li><a id="power_1989" href="power/1989.html">1989</a></li>    <li><a id="power_1990" href="power/1990.html">1990</a></li>    <li><a id="power_1991" href="power/1991.html">1991</a></li>    <li><a id="power_1992" href="power/1992.html">1992</a></li>    <li><a id="power_1993" href="power/1993.html">1993</a></li>    <li><a id="power_1994" href="power/1994.html">1994</a></li>    <li><a id="power_1995" href="power/1995.html">1995</a></li>    <li><a id="power_1996" href="power/1996.html">1996</a></li>    <li><a id="power_1997" href="power/1997.html">1997</a></li>    <li><a id="power_1998" href="power/1998.html">1998</a></li>    <li><a id="power_1999" href="power/1999.html">1999</a></li>    <li><a id="power_2000" href="power/2000.html">2000</a></li>    <li><a id="power_2001" href="power/2001.html">2001</a></li>    <li><a id="power_2002" href="power/2002.html">2002</a></li>    <li><a id="power_2003" href="power/2003.html">2003</a></li>    <li><a id="power_2004" href="power/2004.html">2004</a></li>    <li><a id="power_2005" href="power/2005.html">2005</a></li>    <li><a id="power_2006" href="power/2006.html">2006</a></li>    <li><a id="power_2007" href="power/2007.html">2007</a></li>    <li><a id="power_2008" href="power/2008.html">2008</a></li>    <li><a id="power_2009" href="power/2009.html">2009</a></li>    <li><a id="power_2010" href="power/2010.html">2010</a></li>    <li><a id="power_2011" href="power/2011.html">2011</a></li>    <li><a id="power_2012" href="power/2012.html">2012</a></li>
+  </ul>
+</div>
+
+<h2>使用的工具</h2>
+
+<ul>
+<li>繪圖工具: <a href="https://github.com/taiyun/recharts">recharts</a></li>
+</ul>
+
+</body>
+
+</html>

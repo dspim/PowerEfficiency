@@ -1,0 +1,223 @@
+
+<!-- jsHeader -->
+<script src='http://echarts.baidu.com/doc/example/www/js/echarts.js'></script>
+<!-- jsHeader -->
+
+
+<!-- divChart -->
+<div id='ePieID8f378849bb0' style='width:768px; height:512px; ;border:1px solid #ccc;padding:10px;'></div>
+
+<!-- jsChart -->
+<script>
+
+   require.config({
+        paths:{ 
+            'echarts': 'http://echarts.baidu.com/build/dist'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+            'echarts/chart/line',
+            'echarts/chart/scatter',
+            'echarts/chart/k',
+            'echarts/chart/pie',
+            'echarts/chart/map',
+            'echarts/chart/force',
+            'echarts/chart/radar'
+        ],
+	function(ec) {
+		var EChart_ePieID8f378849bb0 = ec.init(document.getElementById('ePieID8f378849bb0'))
+		var option_ePieID8f378849bb0 = 
+{
+	"title" : {
+		"text" : "Pie Chart",
+		"subtext" : "",
+		"x" : "center",
+		"y" : "top"
+	},
+	"calculable" : true,
+	"tooltip" : {
+		"show" : true,
+		"trigger" : "item"
+	},
+	"toolbox" : {
+		"show" : true,
+		"x" : "right",
+		"y" : "top",
+		"orient" : "horizontal",
+		"feature" : {
+			"mark" : {
+				"show" : true
+			},
+			"dataZoom" : {
+				"show" : false
+			},
+			"magicType" : {
+				"show" : true,
+				"type" : [
+					"line",
+					"bar",
+					"stack",
+					"tiled"
+				]
+			},
+			"restore" : {
+				"show" : true
+			},
+			"dataView" : {
+				"show" : {
+					"readOnly" : false
+				}
+			},
+			"saveAsImage" : {
+				"show" : true
+			}
+		}
+	},
+	"legend" : {
+		"show" : true,
+		"orient" : "vertical",
+		"x" : "left",
+		"y" : "top",
+		"data" : [
+			"A 農、林、漁、牧業",
+			"B 礦業及土石採取業",
+			"C 製造業",
+			"D 電力及燃氣供應業",
+			"E 用水供應及污染整治業",
+			"F 營造業",
+			"G 批發及零售業",
+			"H 運輸及倉儲業",
+			"I 住宿及餐飲業",
+			"J 資訊及通訊傳播業",
+			"K 金融及保險業",
+			"L 不動產業",
+			"M 專業、科學及技術服務業",
+			"N 支援服務業",
+			"O 公共行政及國防",
+			"P 教育服務業",
+			"Q 醫療保健及社會工作服務業",
+			"R 藝術、娛樂及休閒服務業",
+			"S 其他服務業"
+		]
+	},
+	"series" : [
+		{
+			"name" : "pie chart",
+			"type" : "pie",
+			"radius" : [
+				20,
+				110
+			],
+			"center" : [
+				"50%",
+				"200"
+			],
+			"roseType" : "",
+			"itemStyle" : {
+				"normal" : {
+					"label" : {
+						"show" : true
+					},
+					"labelLine" : {
+						"show" : true
+					}
+				},
+				"emphasis" : {
+					"label" : {
+						"show" : false
+					},
+					"labelLine" : {
+						"show" : false
+					}
+				}
+			},
+			"data" : [
+				{
+					"value" : 192893,
+					"name" : "A 農、林、漁、牧業"
+				},
+				{
+					"value" : 48804,
+					"name" : "B 礦業及土石採取業"
+				},
+				{
+					"value" : 1569840,
+					"name" : "C 製造業"
+				},
+				{
+					"value" : 127210,
+					"name" : "D 電力及燃氣供應業"
+				},
+				{
+					"value" : 35475,
+					"name" : "E 用水供應及污染整治業"
+				},
+				{
+					"value" : 246730,
+					"name" : "F 營造業"
+				},
+				{
+					"value" : 746429,
+					"name" : "G 批發及零售業"
+				},
+				{
+					"value" : 238771,
+					"name" : "H 運輸及倉儲業"
+				},
+				{
+					"value" : 90733,
+					"name" : "I 住宿及餐飲業"
+				},
+				{
+					"value" : 132817,
+					"name" : "J 資訊及通訊傳播業"
+				},
+				{
+					"value" : 400792,
+					"name" : "K 金融及保險業"
+				},
+				{
+					"value" : 392132,
+					"name" : "L 不動產業"
+				},
+				{
+					"value" : 77284,
+					"name" : "M 專業、科學及技術服務業"
+				},
+				{
+					"value" : 29096,
+					"name" : "N 支援服務業"
+				},
+				{
+					"value" : 485568,
+					"name" : "O 公共行政及國防"
+				},
+				{
+					"value" : 180500,
+					"name" : "P 教育服務業"
+				},
+				{
+					"value" : 102279,
+					"name" : "Q 醫療保健及社會工作服務業"
+				},
+				{
+					"value" : 39503,
+					"name" : "R 藝術、娛樂及休閒服務業"
+				},
+				{
+					"value" : 116883,
+					"name" : "S 其他服務業"
+				}
+			]
+		}
+	]
+}
+  EChart_ePieID8f378849bb0.setOption(option_ePieID8f378849bb0);
+        }
+    );
+</script>
