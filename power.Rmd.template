@@ -1,0 +1,21 @@
+```{r power, results='asis', echo = FALSE}
+suppressPackageStartupMessages({
+  library(recharts)
+  library(dplyr)
+})
+op <- options(recharts.plot.tag='chart')
+get_subpattern <- function(pattern, x, i) {
+  sapply(regmatches(x, regexec(pattern, x)), `[`, i)
+}
+gdp <- read.csv("../data/gdp.csv", header = T, stringsAsFactor = F) %>%
+  filter(grepl("^[A-Z]+[ \\.]", name)) %>%
+  mutate(label = get_subpattern("^([A-Z]+)[ \\.]", name, 2))
+gdp1 <- filter(gdp, nchar(label) == 1)
+gdp2 <- filter(gdp, nchar(label) == 2)
+charts <- list()
+year.value <- {{year_value}}
+gdp.year <- filter(gdp1, year == year.value)
+x <- gdp.year$value
+names(x) <- as.character(gdp.year$name)
+plot(ePie(x, legend.orient = "vertical"))
+```
