@@ -1,0 +1,47 @@
+```{r setup, include=FALSE}
+suppressPackageStartupMessages({
+  library(knitr)
+  library(dplyr)
+  library(whisker)
+})
+opts_chunk$set(echo = FALSE)
+```
+
+近年來能源議題因為核四的關係，受到大家的廣泛的關注。其中爭論最嚴重的議題之一，就是能源和經濟的關係。有一個看法是，利用提升能源的使用效率，來達到降低能源需求的同時，來維持經濟的發展。
+
+這裡我們利用政府的公開資料來研究各種產業運用能源的狀況，以及貢獻的國民生產毛額，來了解各行各業使用能源的效率。透過這樣的研究，我們可以：
+
+- 透過各行各業的用電度數，來了解哪些行業是耗能的行業，哪些是節能的行業
+- 透過各行各業對國民生產毛額的貢獻，來了解哪些行業對經濟的影響較大，哪些對經濟的影響較小
+- 透過比對耗電和國民生產毛額的數據，來了解哪些行業對能源的使用較為浪費，應該是重點研究如何提升效率的對象
+
+## 資料來源
+
+- gdp: [中華民國統計資訊網-總體統計資料庫](http://61.60.106.82/pxweb/Dialog/statfile9L.asp)
+- power: [政府資料開放平台-用電統計資料](http://data.gov.tw/node/6064)
+
+## 能源消耗概況
+
+<div id = "tabs">
+  <ul>
+```{r power, results='asis', cache=TRUE}
+template <- readLines("power.Rmd.template") %>%
+  paste(collapse="\n")
+year_value.all <- paste(1981:1982) #paste(1981:2012)
+for(year_value in year_value.all) {
+  render <- whisker.render(template, debug = T)
+  write(render, file = sprintf("power/%s.Rmd", year_value))
+  cat(sprintf('    <li><a href="power/%s.html">%s</a></li>', year_value, year_value))
+}
+```
+  </ul>
+```{r power_tab_content, results='asis', dependson="power"}
+#for(year_value in year_value.all) {
+#  cat(sprintf('    <div id="power_%s" class="tab_content"><a href="power/%s.html"></div>', year_value, year_value))
+#}
+```
+</div>
+
+## 使用的工具
+
+- 繪圖工具: [recharts](https://github.com/taiyun/recharts)
